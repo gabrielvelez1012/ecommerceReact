@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, InputGroup, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -32,14 +32,21 @@ const Home = () => {
         {/**Categories */}
 
         <Col lg={3}>
-          {categories.map((category) => (
+
+          <ListGroup>   
+
+            {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => dispatch(filterProductCategoryThunk(category.id))}
             >
               {category.name}
             </button>
-          ))}
+          ))
+          }
+
+          </ListGroup>
+          
         </Col>
 
             {/**News */}

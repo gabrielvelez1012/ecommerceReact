@@ -1,8 +1,14 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AppNavbar = () => {
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.setItem("token", "")
+    navigate("/login");
+  }
     return (
     <Navbar className='navbar' expand="lg" variant="dark" bg="success" size="lg">
       <Container>
@@ -13,6 +19,7 @@ const AppNavbar = () => {
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
             <Nav.Link as={Link} to="/purchases">Purchases</Nav.Link>
             <Nav.Link>Cart (sidebar)</Nav.Link>
+            <Nav.Link onClick={logout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
