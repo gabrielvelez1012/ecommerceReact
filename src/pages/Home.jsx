@@ -22,17 +22,14 @@ const Home = () => {
 
     axios
       .get("https://e-commerce-api-v2.academlo.tech/api/v1/categories/")
-      .then((res) => setCategories(res.data));
+      .then(res => setCategories(res.data));
   }, []);
   console.log(categories);
   return (
-    <div>
+    <div className="container">
       <Row>
-
         {/**Categories */}
-
         <Col lg={3}>
-
           <ListGroup>   
 
             {categories.map((category) => (
@@ -49,7 +46,7 @@ const Home = () => {
           
         </Col>
 
-            {/**News */}
+            {/**Products */}
 
         <Col lg={9}>
           <h1>Home</h1>
@@ -74,15 +71,15 @@ const Home = () => {
           {productList.map((products) => (
             <li
               key={products.id}
-              onClick={() => navigate(`/products/${products.id}`)}
+              onClick={() => navigate(`/products/${products.id}`)} 
             >
-              {products.title}
-              <br />
               <img
                 src={products.images?.[0].url}
                 alt=""
                 style={{ width: 300 }}
               />
+              <br />
+                {products.title}
             </li>
           ))}
         </Col>
